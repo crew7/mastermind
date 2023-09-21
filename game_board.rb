@@ -1,45 +1,101 @@
-first_chosen_color = 'a'
-second_chosen_color = 'b'
-third_chosen_color = 'c'
-fourth_chosen_color = 'd'
+# frozen_string_literal: true
 
-first_key_peg_result = 'a'
-second_key_peg_result = 'b'
-third_key_peg_result = 'c'
-fourth_key_peg_result = 'd'
-# Code peg box
-top_left_corner = "\u250C"
-horizontal_line = "\u2500"
-code_peg_horizontal_line = horizontal_line * 9
-key_peg_horizontal_line = horizontal_line * 4
-top_right_corner = "\u2510"
-code_peg_interior = [
-  ' ', first_chosen_color,
-  ' ', second_chosen_color,
-  ' ', third_chosen_color,
-  ' ', fourth_chosen_color,
-  ' '
-].join
-key_peg_interior = [first_key_peg_result, second_key_peg_result, third_key_peg_result, fourth_key_peg_result].join
-key_peg_interor = []
-vertical_line = "\u2502"
-bottom_left_corner = "\u2514"
-bottom_right_corner = "\u2518"
-newline = "\n"
-print newline
+# Creates gameboard and updates values
+class GameBoard
 
-#top
-print top_left_corner + code_peg_horizontal_line + top_right_corner + newline
-#middle
-print vertical_line + code_peg_interior + vertical_line + newline
-#bottom
-print bottom_left_corner + code_peg_horizontal_line + bottom_right_corner + newline
+  def create_board
+    create_board_top
+    print newline
+    create_board_body
+    print newline
+    create_board_bottom
+    print newline
+  end
 
-# Key peg box
+  def create_board_top
+    create_code_peg_top
+    create_key_peg_top
+  end
 
-#top
-print top_left_corner + key_peg_horizontal_line + top_right_corner + newline
-#middle
-print vertical_line + key_peg_interior + vertical_line + newline
-#bottom
-print bottom_left_corner + key_peg_horizontal_line + bottom_right_corner + newline
+  def create_board_body
+    create_code_peg_body
+    create_key_peg_body
+  end
+
+  def create_board_bottom
+    create_code_peg_bottom
+    create_key_peg_bottom
+  end
+
+  private
+
+  attr_accessor :first_chosen_color, :second_chosen_color,
+                :third_chosen_color, :fourth_chosen_color,
+                :first_key_peg_result, :second_key_peg_result,
+                :third_key_peg_result, :fourth_key_peg_result
+
+  attr_reader :top_left_corner, :horizontal_line, :top_right_corner,
+              :vertical_line, :bottom_left_corner, :bottom_right_corner,
+              :code_peg_horizontal_line, :key_peg_horizontal_line, :newline,
+              :code_peg_interior, :key_peg_interior
+
+  def initialize
+    @top_left_corner = "\u250C"
+    @horizontal_line = "\u2500"
+    @code_peg_horizontal_line = horizontal_line * 9
+    @key_peg_horizontal_line = horizontal_line * 4
+    @top_right_corner = "\u2510"
+    @vertical_line = "\u2502"
+    @bottom_left_corner = "\u2514"
+    @bottom_right_corner = "\u2518"
+    @newline = "\n"
+
+    #test
+    @code_peg_interior = ' ' * 9
+    @key_peg_interior = ' ' * 4
+  end
+
+  def color_choices(first_chosen_color, second_chosen_color, third_chosen_color, fourth_chosen_color)
+    @code_peg_interior = [
+      ' ', first_chosen_color,
+      ' ', second_chosen_color,
+      ' ', third_chosen_color,
+      ' ', fourth_chosen_color,
+      ' '
+    ].join
+  end
+
+
+
+  def color_choice_results
+    @key_peg_interior =
+      [first_key_peg_result, second_key_peg_result, third_key_peg_result, fourth_key_peg_result].join
+  end
+
+  def create_code_peg_top
+    print top_left_corner + code_peg_horizontal_line + top_right_corner
+  end
+
+  def create_code_peg_body
+    print vertical_line + code_peg_interior + vertical_line
+  end
+
+  def create_code_peg_bottom
+    print bottom_left_corner + code_peg_horizontal_line + bottom_right_corner
+  end
+
+  def create_key_peg_top
+    print top_left_corner + key_peg_horizontal_line + top_right_corner
+  end
+
+  def create_key_peg_body
+    print vertical_line + key_peg_interior + vertical_line
+  end
+
+  def create_key_peg_bottom
+    print bottom_left_corner + key_peg_horizontal_line + bottom_right_corner
+  end
+end
+
+a = GameBoard.new
+a.create_board
