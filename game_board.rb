@@ -2,7 +2,6 @@
 
 # Creates gameboard and updates values
 class GameBoard
-
   def create_board
     create_board_top
     print newline
@@ -27,6 +26,10 @@ class GameBoard
     create_key_peg_bottom
   end
 
+  def color_choices(choices)
+    @code_peg_interior = [choices].join
+  end
+
   private
 
   attr_accessor :first_chosen_color, :second_chosen_color,
@@ -42,8 +45,8 @@ class GameBoard
   def initialize
     @top_left_corner = "\u250C"
     @horizontal_line = "\u2500"
-    @code_peg_horizontal_line = horizontal_line * 9
-    @key_peg_horizontal_line = horizontal_line * 4
+    @code_peg_horizontal_line = horizontal_line * 8
+    @key_peg_horizontal_line = horizontal_line * 8
     @top_right_corner = "\u2510"
     @vertical_line = "\u2502"
     @bottom_left_corner = "\u2514"
@@ -51,21 +54,9 @@ class GameBoard
     @newline = "\n"
 
     #test
-    @code_peg_interior = ' ' * 9
-    @key_peg_interior = ' ' * 4
+    @code_peg_interior = ''
+    @key_peg_interior = "\u26AA\u{1F534}\u26AA\u{1F534}"
   end
-
-  def color_choices(first_chosen_color, second_chosen_color, third_chosen_color, fourth_chosen_color)
-    @code_peg_interior = [
-      ' ', first_chosen_color,
-      ' ', second_chosen_color,
-      ' ', third_chosen_color,
-      ' ', fourth_chosen_color,
-      ' '
-    ].join
-  end
-
-
 
   def color_choice_results
     @key_peg_interior =
@@ -96,6 +87,3 @@ class GameBoard
     print bottom_left_corner + key_peg_horizontal_line + bottom_right_corner
   end
 end
-
-a = GameBoard.new
-a.create_board
