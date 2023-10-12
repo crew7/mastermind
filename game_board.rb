@@ -53,8 +53,7 @@ class GameBoard
     @bottom_right_corner = "\u2518"
     @newline = "\n"
 
-    #test
-    @code_peg_interior = ''
+    #place holder value
     @key_peg_interior = "\u26AA\u{1F534}\u26AA\u{1F534}"
   end
 

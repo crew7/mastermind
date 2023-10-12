@@ -1,21 +1,34 @@
+# frozen_string_literal: true
+
+# Initiates game depending on player input
 class Game
-  attr_reader :maker_player, :breaker_player
+  attr_reader :player_maker, :player_breaker
 
   def play
     get_player_details
 
-    if @maker_player
+    if @player_maker
       play_as_maker
-    elsif @breaker_player
+    elsif @player_breaker
       play_as_breaker
     end
   end
 
   def play_as_maker
-    maker_player.get_player_colors
-    game = GameBoard.new
-    game.color_choices(maker_player.user_colors)
-    game.create_board
+    game_board = GameBoard.new
+    game_logic = GameLogic.new
+    computer_breaker = ComputerBreaker.new
+    player_maker.get_chosen_colors
+    # logic in loop with game board display here
+    game_logic.receive_maker_colors(player_maker.chosen_colors)
+    game_logic.receive_breaker_colors(computer_breaker.chosen_colors)
+
+    game_board.color_choices(player_maker.chosen_colors)
+    game_board.create_board
+
+    #loop do 
+    #  break if false # replace with game_logic game end condition
+    #end
   end
 
   def play_as_breaker
@@ -29,7 +42,7 @@ class Game
 
     case player.player_role
     when 'maker'
-      @maker_player = PlayerMaker.new(player)
+      @player_maker = PlayerMaker.new(player)
     when 'breaker'
       puts 'case says breaker'
     end

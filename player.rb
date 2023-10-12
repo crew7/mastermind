@@ -15,11 +15,11 @@ class Player
 
   def ask_player_role
     while true
-      puts "#{@player_name}, would you like to be the code maker or code breaker? (Enter either 'Maker' or 'Breaker')"
+      puts "\n#{@player_name}, would you like to be the code maker or code breaker? (Enter either 'Maker' or 'Breaker')"
       @player_role = gets.chomp.downcase
 
-      if @player_role == 'maker' || @player_role == 'breaker'
-        puts "You are the #{@player_role}."
+      if player_role == 'maker' || player_role == 'breaker'
+        puts "\n#{player_name}, you are now the #{player_role}."
         break
       else
         redo

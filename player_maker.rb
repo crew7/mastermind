@@ -5,7 +5,7 @@ class PlayerMaker
   include CircleColors
 
   attr_reader :player_name, :player_role
-  attr_accessor :user_colors
+  attr_accessor :chosen_colors
 
   def initialize(player)
     @player_choices = %w[yellow blue orange green purple black]
@@ -14,14 +14,14 @@ class PlayerMaker
     super()
   end
 
-  def get_player_colors
+  def get_chosen_colors
     while true
-      puts "#{@player_name}, choose your 4 breaker colors separated by a comma. Your options are as follows;"
-      puts "Yellow, Blue, Orange, Green, Purple, Black"
-      user_colors = gets.chomp.downcase.split(',').map!(&:strip)
-      if user_colors.length == 4
-        if user_colors.all? { |color| @player_choices.include?(color) }
-          user_colors.map! do |color|
+      puts "\n#{player_name}, type your 4 colored code separated by a comma. Your options are as follows;"
+      puts "Yellow, Blue, Orange, Green, Purple, Black\n\n"
+      chosen_colors = gets.chomp.downcase.split(',').map!(&:strip)
+      if chosen_colors.length == 4
+        if chosen_colors.all? { |color| @player_choices.include?(color) }
+          chosen_colors.map! do |color|
             case color
             when 'yellow'
               color = yellow_circle
@@ -37,7 +37,7 @@ class PlayerMaker
               color = black_circle
             end
           end
-          self.user_colors = user_colors
+          self.chosen_colors = chosen_colors
           break
         else
           puts 'You didn\'t pick the colors listed! Try again.'
