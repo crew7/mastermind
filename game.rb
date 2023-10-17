@@ -18,17 +18,16 @@ class Game
     game_board = GameBoard.new
     game_logic = GameLogic.new
     computer_breaker = ComputerBreaker.new
-    player_maker.get_chosen_colors
-    # logic in loop with game board display here
-    game_logic.receive_maker_colors(player_maker.chosen_colors)
-    game_logic.receive_breaker_colors(computer_breaker.chosen_colors)
+    player_maker.get_maker_colors
+    game_logic.receive_maker_colors(player_maker.maker_colors)
+    # logic in loop here
+    computer_breaker.get_breaker_colors
+    game_logic.receive_breaker_colors(computer_breaker.breaker_colors)
+    puts game_logic.compare_colors
 
-    game_board.color_choices(player_maker.chosen_colors)
+    game_board.color_choices(player_maker.maker_colors)
     game_board.create_board
-
-    #loop do 
-    #  break if false # replace with game_logic game end condition
-    #end
+    # end loop logic
   end
 
   def play_as_breaker

@@ -1,8 +1,23 @@
 # frozen_string_literal: true
 
+require_relative 'circle_colors'
+
 # Hosts win conditions
 class GameLogic
+  include CircleColors
   attr_accessor :maker_colors, :breaker_colors
+
+  def compare_colors()
+    maker_colors.each_with_index.map do |maker_color, maker_index|
+      if maker_color == breaker_colors[maker_index]
+        maker_color = red_circle
+      elsif breaker_colors.include?(maker_color)
+        maker_color = white_circle
+      else
+        maker_color = "  "
+      end
+    end
+  end
 
   def receive_maker_colors(colors)
     self.maker_colors = colors

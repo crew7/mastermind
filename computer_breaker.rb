@@ -4,10 +4,10 @@
 class ComputerBreaker
   include CircleColors
 
-  attr_accessor :chosen_colors
+  attr_accessor :breaker_colors
 
-  def get_chosen_colors
-    self.chosen_colors = [yellow_circle, blue_circle, black_circle, purple_circle] # temp
+  def get_breaker_colors
+    self.breaker_colors = [yellow_circle, blue_circle, black_circle, purple_circle] # temp
   end
 
 end

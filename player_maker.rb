@@ -5,7 +5,7 @@ class PlayerMaker
   include CircleColors
 
   attr_reader :player_name, :player_role
-  attr_accessor :chosen_colors
+  attr_accessor :maker_colors
 
   def initialize(player)
     @player_choices = %w[yellow blue orange green purple black]
@@ -14,7 +14,7 @@ class PlayerMaker
     super()
   end
 
-  def get_chosen_colors
+  def get_maker_colors
     while true
       puts "\n#{player_name}, type your 4 colored code separated by a comma. Your options are as follows;"
       puts "Yellow, Blue, Orange, Green, Purple, Black\n\n"
@@ -37,7 +37,7 @@ class PlayerMaker
               color = black_circle
             end
           end
-          self.chosen_colors = chosen_colors
+          self.maker_colors = chosen_colors
           break
         else
           puts 'You didn\'t pick the colors listed! Try again.'
