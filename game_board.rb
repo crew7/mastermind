@@ -26,16 +26,15 @@ class GameBoard
     create_key_peg_bottom
   end
 
-  def color_choices(choices)
-    @code_peg_interior = [choices].join
+  def maker_color_choices(choices)
+    @code_peg_interior = choices.join
+  end
+
+  def compared_color_choices(results)
+    @key_peg_interior = results.join
   end
 
   private
-
-  attr_accessor :first_chosen_color, :second_chosen_color,
-                :third_chosen_color, :fourth_chosen_color,
-                :first_key_peg_result, :second_key_peg_result,
-                :third_key_peg_result, :fourth_key_peg_result
 
   attr_reader :top_left_corner, :horizontal_line, :top_right_corner,
               :vertical_line, :bottom_left_corner, :bottom_right_corner,
@@ -52,14 +51,6 @@ class GameBoard
     @bottom_left_corner = "\u2514"
     @bottom_right_corner = "\u2518"
     @newline = "\n"
-
-    #place holder value
-    @key_peg_interior = "\u26AA\u{1F534}\u26AA\u{1F534}"
-  end
-
-  def color_choice_results
-    @key_peg_interior =
-      [first_key_peg_result, second_key_peg_result, third_key_peg_result, fourth_key_peg_result].join
   end
 
   def create_code_peg_top

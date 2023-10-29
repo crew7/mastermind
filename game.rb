@@ -25,7 +25,8 @@ class Game
     game_logic.receive_breaker_colors(computer_breaker.breaker_colors)
     puts game_logic.compare_colors
 
-    game_board.color_choices(player_maker.maker_colors)
+    game_board.maker_color_choices(player_maker.maker_colors)
+    game_board.compared_color_choices(game_logic.compare_colors)
     game_board.create_board
     # end loop logic
   end
