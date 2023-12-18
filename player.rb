@@ -4,9 +4,7 @@ require_relative 'game_board'
 
 # Stores player information and changes game state.
 class Player
-  attr_reader :player_name, :player_role,
-              :yellow_circle, :blue_circle, :orange_circle,
-              :green_circle, :purple_circle, :black_circle
+  attr_reader :player_name, :player_role
 
   def ask_player_name
     puts 'What is your name?'

@@ -8,7 +8,7 @@ class GameLogic
   attr_accessor :maker_colors, :breaker_colors
 
   def compare_colors()
-    maker_colors.each_with_index.map do |maker_color, maker_index|
+    compared_colors = maker_colors.each_with_index.map do |maker_color, maker_index|
       if maker_color == breaker_colors[maker_index]
         maker_color = red_circle
       elsif breaker_colors.include?(maker_color)
@@ -17,6 +17,7 @@ class GameLogic
         maker_color = "  "
       end
     end
+    compared_colors.sort.reverse
   end
 
   def receive_maker_colors(colors)
