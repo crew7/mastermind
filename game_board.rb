@@ -2,6 +2,8 @@
 
 # Creates gameboard and updates values
 class GameBoard
+  attr_accessor :current_turn
+
   def create_board
     create_board_top
     print newline
@@ -32,6 +34,10 @@ class GameBoard
 
   def compared_color_choices(results)
     @key_peg_interior = results.join
+  end
+
+  def receive_current_turn(turn_counter)
+    self.current_turn = turn_counter
   end
 
   private

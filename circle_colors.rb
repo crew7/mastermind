@@ -4,7 +4,7 @@
 module CircleColors
   attr_accessor :yellow_circle, :blue_circle, :orange_circle,
                 :green_circle, :purple_circle, :black_circle,
-                :white_circle, :red_circle
+                :white_circle, :red_circle, :all_circles
 
   def initialize
     self.yellow_circle = "\u{1F7E1}"
@@ -15,5 +15,9 @@ module CircleColors
     self.black_circle = "\u26AB"
     self.white_circle = "\u26AA"
     self.red_circle = "\u{1F534}"
+    self.all_circles = [
+      yellow_circle, blue_circle, orange_circle,
+      green_circle, purple_circle, black_circle,
+    ]
   end
 end
