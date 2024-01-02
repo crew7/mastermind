@@ -28,7 +28,6 @@ class Game
     game_logic.receive_breaker_colors(computer_breaker.breaker_colors)
     game_state = game_logic.compare_colors
     game_board.compared_color_choices(game_state[:result_colors])
-    
     game_board.create_board
     # end loop logic
   end

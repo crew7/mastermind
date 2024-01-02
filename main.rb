@@ -8,7 +8,6 @@ require_relative 'game_logic'
 require_relative 'circle_colors'
 require_relative 'player'
 require_relative 'player_maker'
-
 require_relative 'computer_breaker'
 
 Game.new.play
