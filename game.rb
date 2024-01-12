@@ -23,12 +23,16 @@ class Game
     game_logic.receive_maker_colors(player_maker.maker_colors)
     game_state = { turn_counter: 1, result_colors: nil }
     # logic in loop here
-    game_board.receive_current_turn(game_logic.turn_counter) # color comparison increments turn, so this is before
-    computer_breaker.gen_breaker_colors(game_state[:turn_counter], game_state[:result_colors])
-    game_logic.receive_breaker_colors(computer_breaker.breaker_colors)
-    game_state = game_logic.compare_colors
-    game_board.compared_color_choices(game_state[:result_colors])
-    game_board.create_board
+    while game_state[:turn_counter] <= 12
+      game_board.receive_current_turn(game_logic.turn_counter) # color comparison increments turn, so this is before
+      computer_breaker.gen_breaker_colors(game_state[:turn_counter], game_state[:result_colors])
+      game_logic.receive_breaker_colors(computer_breaker.breaker_colors)
+      p computer_breaker.breaker_colors
+      game_state = game_logic.compare_colors
+      game_board.compared_color_choices(game_state[:result_colors])
+      game_board.create_board
+      sleep(2)
+    end
     # end loop logic
   end
 

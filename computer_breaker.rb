@@ -8,11 +8,14 @@ class ComputerBreaker
 
   def gen_breaker_colors(turn_counter, result_colors)
     if turn_counter == 1
-      first_choice = all_circles.sample(2) # start with 1122
-      self.breaker_colors = [first_choice[0], first_choice[0], first_choice[1], first_choice[1]]
+      blind_choice = breaker_moves.sample(2) # start with 1122
+      self.breaker_colors = [blind_choice[0], blind_choice[0], blind_choice[1], blind_choice[1]]
     else
-      if result_colors.all? {|x| x.strip.empty?} == true
+      if result_colors.all? {|x| x.strip.empty?} == true # dont use options if no solution
+        breaker_colors.uniq.each { |x| breaker_moves.delete(x) }
         puts "no matches!"
+        blind_choice = breaker_moves.sample(2) # start with 1122
+        self.breaker_colors = [blind_choice[0], blind_choice[0], blind_choice[1], blind_choice[1]]
       else
         puts "matches!"
       end
@@ -20,5 +23,4 @@ class ComputerBreaker
     
     # self.breaker_colors = [yellow_circle, blue_circle, black_circle, purple_circle] # temp
   end
-
 end
